@@ -1,0 +1,95 @@
+# Lesson 2.4: While Loops
+
+# Loops are an important concept in computer programming.
+# Loops let us run blocks of code many times which can be
+# really useful when we have to repeat tasks.
+
+# https://www.udacity.com/course/viewer#!/c-nd000/l-4196788670/e-48686708/m-48480488
+
+def count():
+    i = 0
+    while i != 10:
+        print i
+        i = i + 1
+
+count()
+
+# Add your own code and notes here
+
+i = 0
+while i != 10:
+    i = i + 1
+    print i
+
+    def print_numbers(n):
+    	i = 1
+    	while i <= n:
+    		print i
+    		i = i + 1
+
+print_numbers(3)
+
+def remove(somestring, sub):
+    """Return somestring with sub removed."""
+    location = somestring.find(sub)
+    print "# DEBUG:"
+    print "# location", location
+    length = len(sub)
+    print "#length", length
+    part_before = somestring[:location]
+    part_after = somestring[location + length:]
+    print "#before and after", part_before, part_after
+    return part_before + part_after
+
+# 
+# Don't change these test cases!
+
+print remove('ding', 'do')  # "do" isn't in "ding"; should print "ding"
+print remove('doomy', 'dooming')  # and this should print "doomy"
+
+
+from random import randint
+
+def random_verb():
+    random_num = randint(0, 1)
+    if random_num == 0:
+        return "run"
+    else:
+        return "kayak"
+        
+def random_noun():
+    random_num = randint(0,1)
+    if random_num == 0:
+        return "sofa"
+    else:
+        return "llama"
+
+def word_transformer(word):
+    if word == "NOUN":
+        return random_noun()
+    elif word == "VERB":
+        return random_verb()
+    else:
+        return word[0]
+        
+def process_madlib(madlib):
+    processed = ""
+    index = 0
+    box_length = 4
+    while index<len(madlib):
+        frame = madlib[index:index + box_length]
+        to_add = word_transformer(frame)
+        processed += to_add
+    if len(to_add) == 1:
+        index += 1
+    else:
+        index += 4
+    return processed
+    # you may find the built-in len function useful for this quiz
+    # documentation: https://docs.python.org/2/library/functions.html#len
+    
+test_string_1 = "This is a good NOUN to use when you VERB your food"
+test_string_2 = "I'm going to VERB to the store and pick up a NOUN or two."
+print process_madlib(test_string_1)
+# print process_madlib(test_string_2)
+
